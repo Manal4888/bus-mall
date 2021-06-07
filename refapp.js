@@ -1,5 +1,5 @@
 
-'use strict'
+'use strict';
 let images=document.getElementById('images');
 
 
@@ -24,6 +24,9 @@ let userNumTrial=0;  //Counter
 let firstImageIndex;
 let secondImageIndex;
 let thirdImageIndex;
+let go=true;
+let screenImagesOld=[];
+let screenImagesNew=[];
 
    
 
@@ -72,12 +75,33 @@ function renderThreeImages()
      firstImageIndex=generateRandomIndex();
      secondImageIndex=generateRandomIndex();
      thirdImageIndex=generateRandomIndex();
-    while(firstImageIndex === secondImageIndex ||firstImageIndex===thirdImageIndex || secondImageIndex===thirdImageIndex)
-    {   firstImageIndex=generateRandomIndex();
-        secondImageIndex=generateRandomIndex();
-         }
    
- 
+   
+   function checkIndex()
+    { while(firstImageIndex === secondImageIndex ||firstImageIndex===thirdImageIndex || secondImageIndex===thirdImageIndex || go===false)
+        {   firstImageIndex=generateRandomIndex();
+            secondImageIndex=generateRandomIndex();
+         
+        }
+      }
+     screenImagesOld=[firstImageIndex,secondImageIndex,thirdImageIndex];
+     
+      for (let i = 0; i < screenImagesOld.length; i++)
+         { for (let j = 0; j < screenImagesNew.length; j++) 
+          {  if(screenImagesOld[i]===screenImagesNew[j]) 
+            {
+              go=false;
+              checkIndex();
+            }
+          }
+        }     
+        
+      
+      
+     
+    
+
+
  firstImg.src=Product.allproducts[firstImageIndex].source; //  not text content img= .src to be linked // soure: constructor/parameter  
  Product.allproducts[firstImageIndex].showntimes++,
  //console.log( Product.allproducts[firstImageIndex])
@@ -88,11 +112,11 @@ function renderThreeImages()
  //console.log( Product.allproducts[secondImageIndex].showntimes++);
  
  
- thirdImg.src=Product.allproducts[thirdImageIndex].source;;
+ thirdImg.src=Product.allproducts[thirdImageIndex].source;
  Product.allproducts[thirdImageIndex].showntimes++;
  //console.log( Product.allproducts[thirdImageIndex])
-}     
-
+  
+    }
    renderThreeImages();       // see the images on the screen
 
  
@@ -159,3 +183,11 @@ function handleUserClick(event)
    button.hidden=true;
    
    } 
+
+
+
+
+
+  
+    
+     
