@@ -68,41 +68,44 @@ function renderThreeImages()
     thirdImageIndex=generateRandomIndex();
    
 
-    // while(firstImageIndex === secondImageIndex ||firstImageIndex===thirdImageIndex || secondImageIndex===thirdImageIndex )
-    //     {   firstImageIndex=generateRandomIndex();
-    //         secondImageIndex=generateRandomIndex();
-    //         thirdImageIndex=generateRandomIndex();
-    //     }
-    checkIndex();
-    
-    function checkIndex()
-    { while(firstImageIndex === secondImageIndex ||firstImageIndex===thirdImageIndex || secondImageIndex===thirdImageIndex || go===false)
+    while(firstImageIndex === secondImageIndex ||firstImageIndex===thirdImageIndex || secondImageIndex===thirdImageIndex || screenImagesNew.includes(firstImageIndex)||screenImagesNew.includes(secondImageIndex)||screenImagesNew.includes(thirdImageIndex))
         {   firstImageIndex=generateRandomIndex();
             secondImageIndex=generateRandomIndex();
             thirdImageIndex=generateRandomIndex();
-         break;
         }
-      }
-      console.log(`${screenImagesOld} old`);
-     screenImagesNew=[firstImageIndex,secondImageIndex,thirdImageIndex];
-     let m=0;
-      for (let m = 0; m < screenImagesNew.length; m++)
-        {  
-          for (let j = 0; j < 3; j++) 
-            {  
-            if(screenImagesNew[m]===screenImagesOld[j]) 
-            {
-              go=false; 
-             checkIndex();
-            }
-            else
-            {   screenImagesOld=screenImagesNew;
-                break;
+        screenImagesNew=[firstImageIndex,secondImageIndex,thirdImageIndex];
+
+
+    // checkIndex();     need to be modified to work properly  for now I will use"Includes method"as above 
+    
+    // function checkIndex()
+    // { while(firstImageIndex === secondImageIndex ||firstImageIndex===thirdImageIndex || secondImageIndex===thirdImageIndex || go===false)
+    //     {   firstImageIndex=generateRandomIndex();
+    //         secondImageIndex=generateRandomIndex();
+    //         thirdImageIndex=generateRandomIndex();
+    //      break;
+    //     }
+    //   }
+    //   console.log(`${screenImagesOld} old`);
+    //  screenImagesNew=[firstImageIndex,secondImageIndex,thirdImageIndex];
+    //  let m=0;
+    //   for (let m = 0; m < screenImagesNew.length; m++)
+    //     {  
+    //       for (let j = 0; j < 3; j++) 
+    //         {  
+    //         if(screenImagesNew[m]===screenImagesOld[j]) 
+    //         {
+    //           go=false; 
+    //          checkIndex();
+    //         }
+    //         else
+    //         {   screenImagesOld=screenImagesNew;
+    //             break;
                 
                
-             }
-          }
-        }     
+    //          }
+    //       }
+    //     }     
 
      console.log(`${screenImagesNew} new`);
      
